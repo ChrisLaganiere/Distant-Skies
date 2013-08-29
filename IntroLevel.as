@@ -43,9 +43,9 @@ package
 			{
 				counter++;
 			}
-			else if (albatross.alpha > 0)
+			else if (alpha > 0)
 			{
-				albatross.alpha -= .05;
+				alpha -= .05;
 			}
 			else
 			{

@@ -79,13 +79,7 @@ package
 		private function onRemovedFromStage(event:Event):void
 		{
 			removeEventListener(Event.REMOVED_FROM_STAGE, onRemovedFromStage)
-			MovieClip(parent).controls.upButton.collisionArea.removeEventListener(TouchEvent.TOUCH_BEGIN, upBegin);
-			MovieClip(parent).controls.leftButton.collisionArea.removeEventListener(TouchEvent.TOUCH_BEGIN, leftBegin);
-			MovieClip(parent).controls.rightButton.collisionArea.removeEventListener(TouchEvent.TOUCH_BEGIN, rightBegin);
-			MovieClip(parent).controls.shootButton.collisionArea.removeEventListener(TouchEvent.TOUCH_BEGIN, shootBegin);
-			stage.removeEventListener(TouchEvent.TOUCH_END, allTouchEnd);
-			stage.removeEventListener(KeyboardEvent.KEY_DOWN, onKeyDown);
-			stage.removeEventListener(KeyboardEvent.KEY_UP, onKeyUp);
+			removeListeners();
 		}
 
 		function frameActions():void
@@ -248,7 +242,6 @@ package
 				{
 					_vx = 0;
 					gotoAndStop("stand");
-					this.myHighKid.gotoAndStop("1");
 				}
 				downLeft = false;
 				Main.currentObject.controls.leftButton.alpha = .5;
@@ -259,7 +252,6 @@ package
 				{
 					_vx = 0;
 					gotoAndStop("stand");
-					this.myHighKid.gotoAndStop("1");
 				}
 				downRight = false;
 				Main.currentObject.controls.rightButton.alpha = .5;
@@ -285,7 +277,6 @@ package
 				{
 					_vx = 0;
 					gotoAndStop("stand");
-					this.myHighKid.gotoAndStop("1");
 				}
 				leftID = -1;
 				Main.currentObject.controls.leftButton.alpha = .5;
@@ -384,6 +375,17 @@ package
 					}
 				}
 			}
+		}
+		function removeListeners():void
+		{
+
+			MovieClip(parent).controls.upButton.collisionArea.removeEventListener(TouchEvent.TOUCH_BEGIN, upBegin);
+			MovieClip(parent).controls.leftButton.collisionArea.removeEventListener(TouchEvent.TOUCH_BEGIN, leftBegin);
+			MovieClip(parent).controls.rightButton.collisionArea.removeEventListener(TouchEvent.TOUCH_BEGIN, rightBegin);
+			MovieClip(parent).controls.shootButton.collisionArea.removeEventListener(TouchEvent.TOUCH_BEGIN, shootBegin);
+			stage.removeEventListener(TouchEvent.TOUCH_END, allTouchEnd);
+			stage.removeEventListener(KeyboardEvent.KEY_DOWN, onKeyDown);
+			stage.removeEventListener(KeyboardEvent.KEY_UP, onKeyUp);
 		}
 	}
 }

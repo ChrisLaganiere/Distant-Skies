@@ -13,8 +13,8 @@ package
 	
 	public class Level1 extends MovieClip
 	{
-		public var scene:int = 2;
-		public var numScenes:int = 2;
+		public var scene:int = 3;
+		public var numScenes:int = 3;
 		public var passScene:Boolean = true;
 		public var smoothPassX:int = 0;
 		public var smoothPassY:int = 0;

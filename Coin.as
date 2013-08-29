@@ -11,7 +11,8 @@ package
 		public var _vy:Number;
 		public var _vx:Number;
 		private var value:int;
-		
+		private var shouldKillMe:Boolean;
+
 		public function Coin(startValue:int, startVx:Number)
 		{
 			_vx = startVx;
@@ -31,6 +32,7 @@ package
 		{
 			hit = false;
 			gravity = Main.gravityVar;
+			shouldKillMe = false;
 			addEventListener(Event.ADDED_TO_STAGE, onAddedToStage);
 			
 			gotoAndStop(value + "up");
@@ -56,6 +58,10 @@ package
 		}
 		function frameActions():void
 		{
+			if (shouldKillMe)
+			{
+				killMe();
+			}
 			if(Main.currentObject.player.collisionArea.hitTestObject(this) && !hit)
 			{
 				gotoAndPlay(value + "down");

@@ -22,6 +22,7 @@ package
 		{
 			this.x = 0;
 			this.y = 0;
+			this.alpha = 0;
 			addEventListener(Event.ADDED_TO_STAGE, onAddedToStage);
 		}
 		function initLevel():void
@@ -50,6 +51,9 @@ package
 		}
 		function frameActions():void
 		{
+			if (alpha < 1) {
+				alpha += .05;
+			}
 			if (passScene)
 			{
 				doPassScene();

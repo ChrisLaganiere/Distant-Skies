@@ -41,6 +41,14 @@ package
 			level.setChildIndex(level.reports, level.numChildren-1);
 			level.setChildIndex(level.controls, level.numChildren-1);
 		}
+		static public function endGame():void
+		{
+			Main.currentObject.controls.alpha = 0;
+			Main.currentObject.player.gotoAndStop("hurt");
+			Main.currentObject.player.removeListeners();
+			
+			Main.gameIsOver = true;
+		}
 		static public function resetLevel():void
 		{
 			var level:Object = Main.currentObject;

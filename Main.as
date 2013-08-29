@@ -27,6 +27,7 @@ package
 		public static var lives:int;
 		public static var livesLeft:int;
 		public static var score:int;
+		public static var gameIsOver:Boolean;
 		
 		//for smooth pass
 		public static var smoothPass:Boolean = false;
@@ -60,6 +61,7 @@ package
 			halfBlockHeight = 64;
 			halfStageWidth = 400;
 			halfStageHeight = 240;
+			gameIsOver = false;
 		}
 		function onEnterFrame(event:Event):void
 		{
@@ -78,7 +80,24 @@ package
 			{
 				passLevelScene();
 			}
-			currentObject.frameActions();
+			//make screen go to black
+			if (!gameIsOver)
+			{
+				currentObject.frameActions();
+			}
+			else if (currentObject.sceneClip.alpha >= .03) {
+				currentObject.sceneClip.alpha -= .02;
+				currentObject.bg.alpha -= .02;
+			}
+			else {
+				livesLeft = lives;
+				score = 0;
+				
+				nextLevel = 0;
+				endLevel = true;
+				startLevel = true;
+				gameIsOver = false;
+			}
 		}
 		
 		function doEndLevel():void
